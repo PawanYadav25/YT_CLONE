@@ -1,10 +1,12 @@
-
+import Header from "./Utils/Header"
+import Home from "./Utils/Home"
 function App() {
   
 
   return (
     <>
-      <div className="bg-black text-3xl text-white" >Hellow world</div>
+      <Header/>
+      <Home/>
     </>
   )
 }
