@@ -1,12 +1,12 @@
 import Header from "./Utils/Header"
-import Home from "./Utils/Home"
+import { Outlet } from "react-router-dom"
 function App() {
   
 
   return (
     <>
       <Header/>
-      <Home/>
+      <Outlet/>
     </>
   )
 }

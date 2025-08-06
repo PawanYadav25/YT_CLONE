@@ -1,12 +1,13 @@
 import React from 'react'
 import logo from "../IMage/Ylogo.webp"
 import Srchicon from "../IMage/Search.png"
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
     <div className='flex h-15 justify-around items-center'>
-      <div>
-        <img className='h-5 md:ml-3' src={logo} alt="Youtube logo" />
+      <div><Link to='/'>
+        <img className='h-5 md:ml-3' src={logo} alt="Youtube logo" /></Link>
       </div>
       <div className=' flex justify-center w-50 md:w-2/5'>
         <div className='flex justify-center w-full'>
@@ -19,7 +20,8 @@ export default function Header() {
         </div>
       </div>
       <div>
-        <button className='font-bold p-2 rounded-3xl border-1 border-blue-500 text-blue-600 md:w-30'>Sign In</button>
+        <Link to='/login'>
+        <button className='font-bold p-2 rounded-3xl border-1 border-blue-500 text-blue-600 md:w-30'>Sign In</button></Link>
       </div>
     </div>
   )
