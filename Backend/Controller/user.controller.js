@@ -30,7 +30,7 @@ export const login = async (req,res)=>{                                 //Login 
     }
     const enpswd = await bcrypt.compare(pswd, data.password)  //If UserName present verify the Hashed pswd
 
-    //If pswd is not corret send the password incorrect message
+    //If pswd is not correct send the password incorrect message
     if(!enpswd){
         return res.status(401).json({
             message : "password is not correct"

@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./Router/Router.js"
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = new express;  // initialise the Express
 
 //Connect the DB using Mongoose and also update the network to 0.0.0.0 so every one can access
-mongoose.connect('mongodb+srv://pawanpy1999:p1tutdr8bO3Z2HgH@cluster0.stgwlmn.mongodb.net/ytClone').
+mongoose.connect(process.env.Mongo_URL).
 then(()=>{
     console.log("Database connect sucessfully")
 }).catch((err)=>{console.log(err)})
@@ -14,7 +16,7 @@ then(()=>{
 app.use(express.json());
 
 // Defined Port on which localserver Runs
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 //Define the server with the Port
 app.listen(PORT,()=>{
