@@ -9,7 +9,7 @@ function SignUp(){
                 <label className='block m-5 font-bold'>User Name</label>
                 <input className='p-3 outline-none md:w-90 w-80 rounded-2xl focus:bg-white text-center' type="text" placeholder='Enter Username' /><br />
                 <label className='block m-5 font-bold'>Password</label>
-                <input className='p-3 outline-none md:w-90 w-80 rounded-2xl focus:bg-white text-center' type="text" placeholder='Enter Password' /><br />
+                <input className='p-3 outline-none md:w-90 w-80 rounded-2xl focus:bg-white text-center' type="password" placeholder='Enter Password' /><br />
                 <button className=' mt-5 border-2 p-2 md:w-90 w-70 bg-violet-600 focus:bg-white'>Create Account</button>
             </form>
         </div>
