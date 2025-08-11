@@ -57,12 +57,15 @@ export default function Stream() {
                     </div>
                 </div>
             </div>
-            <div className='p-3 bg-gray-400 rounded-2xl mt-3'>
+            <div className='p-3 bg-gray-300 rounded-2xl mt-3'>
+                <p className='font-bold text-lg'>Description</p>
                 <p>{obj.Description}</p>
             </div>
             <div>
-                <div>
-                    <p>Add comment</p>
+                <div className='mt-5 ml-3 md:ml-0'>
+                    <p className='font-bold text-lg'>Comments</p>
+                    <input className='border-b-2 border-black w-2/3 outline-none ' type="text" placeholder='Add comment'/>
+                    <button className='bg-blue-500 w-20 h-8 rounded-3xl text-white'>Add</button>
                 </div>
                 <div>
                     Show comment

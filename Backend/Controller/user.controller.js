@@ -2,8 +2,10 @@ import express from "express";
 import user from "../Model/User_model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Video from "../Model/video_model.js";
 
 const Salt = 10;  //for Hashing the password with salt
+
 
 export const register = async (req,res)=>{                  //Registration for new user
     const {userName : UserNM, Email_id : emal, password: pswd} = req.body;   
@@ -43,3 +45,19 @@ export const login = async (req,res)=>{                                 //Login 
 }
 
 
+export const inrtVd = async (req,res)=>{
+    const {Video_id,channel_Name,channel_image,channel_subscriber,thumbnail_image,video_link,video_title,description} = req.body
+    try {
+        await Video.insertOne({Video_id,channel_Name,channel_image,channel_subscriber,thumbnail_image,video_link,video_title,description})
+        res.json({Message : "Entry has been successfull"})
+    } catch (error) {
+        res.send(error)
+    }
+    
+}
+
+
+export const extractVD = async (req,res)=>{
+    const data = await Video.find()
+    res.send(data)
+}

@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./Router/Router.js"
 import dotenv from "dotenv";
+import cors from "cors"
 dotenv.config();
 
 const app = new express;  // initialise the Express
@@ -14,6 +15,7 @@ then(()=>{
 
 //MiddleWare that apply all the request to change the data into JSON
 app.use(express.json());
+app.use(cors())
 
 // Defined Port on which localserver Runs
 const PORT = process.env.PORT;
