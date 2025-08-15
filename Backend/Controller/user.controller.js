@@ -3,6 +3,7 @@ import user from "../Model/User_model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Video from "../Model/video_model.js";
+import RandomNum from "../middleware/RandomNum.js";
 
 const Salt = 10;  //for Hashing the password with salt
 
@@ -46,9 +47,10 @@ export const login = async (req,res)=>{                                 //Login 
 
 
 export const inrtVd = async (req,res)=>{
-    const {Video_id,channel_Name,channel_image,channel_subscriber,thumbnail_image,video_link,video_title,description} = req.body
+    const {channel_Name,channel_image,channel_subscriber,thumbnail_image,video_link,video_title,description,Video_category} = req.body
+    const videoId = req.randomNumber ;
     try {
-        await Video.insertOne({Video_id,channel_Name,channel_image,channel_subscriber,thumbnail_image,video_link,video_title,description})
+        await Video.insertOne({Video_id:videoId,channel_Name,channel_image,channel_subscriber,thumbnail_image,video_link,video_title,description,Video_category})
         res.json({Message : "Entry has been successfull"})
     } catch (error) {
         res.send(error)

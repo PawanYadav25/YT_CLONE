@@ -37,6 +37,10 @@ const Video_Schema = new Schema({
         type : String,
         required : true
     },
+    Video_category : {
+        type : String,
+        required : true
+    },
 	Views : {
         type : Number,
         default: 123456

@@ -5,6 +5,7 @@ import Home from './Utils/Home.jsx'
 import Login from './Utils/Login.jsx'
 import SignUp from './Utils/SignUp.jsx'
 import Stream from './Utils/Stream.jsx'
+import Channel from './Utils/Channel.jsx'
 import './index.css'
 import App from './App.jsx'
 
@@ -28,6 +29,10 @@ const apRouter = createBrowserRouter([
       {
         path:'/stream',
         element: <Stream/>
+      },
+      {
+        path:'/channel',
+        element: <Channel/>
       }
     ]
   }
