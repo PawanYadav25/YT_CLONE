@@ -86,7 +86,6 @@ const [sidebar, useSidebar] = useState(true)
     }
   return (
     <>
-    {  }
     <div className='flex justify-center h-screen '>
         { sidebar && <div className='h-screen w-20 hidden sm:flex sm:flex-col'>
             <button onClick={()=>{side()}} className='ml-5  lg:ml-7 hover:bg-gray-300 p-2 rounded-4xl focus:bg-gray-400 sm:fixed sm:top-3' ><img className='h-5' src={bar} alt="Button" /></button>
@@ -126,7 +125,7 @@ const [sidebar, useSidebar] = useState(true)
                     </div>
                     <div className='m-3 flex'>
                         <div>
-                            <img className='h-15 w-15 rounded-full' src={dt.channel_image} alt="Channel image" />
+                            <img className='h-12 w-12 rounded-full' src={dt.channel_image} alt="Channel image" />
                         </div>
                         <div className='m-2'>
                             <p className='font-bold text-2xl'>{dt.video_title}</p>
