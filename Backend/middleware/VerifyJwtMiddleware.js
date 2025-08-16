@@ -7,11 +7,10 @@ dotenv.config();
 export default function VerifyJwtToken(req,res,next){
 
     try {
-        const tkheader = req.headers['authorization']
-        const token = tkheader.split(" ")[1]
+        const token = req.headers['authorization']
         jwt.verify(token,process.env.JWT_SECRET,(err, userName)=>{
             if(err){
-                return res.status(403).json({message:"token is not valid, Kindly login again"})
+                return res.status(403).json({message:"token expire"})
             }
             req.userName = userName
             next();

@@ -1,9 +1,41 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import like from '../IMage/like.png'
 import dislike from '../IMage/dislike.png'
 import share from '../IMage/share.png'
 
 export default function Stream() {
+    const { id } = useParams();
+    const [LoginSwitch, setLoginSwitch] = useState(false)
+    
+    async function fetchdata(){
+             try {
+                const URL = `http://localhost:5000/${id}`
+                const headers = {
+                    'Authorization' : localStorage.getItem('token')
+                }
+                const response = await fetch(URL,{headers});
+                const result = await response.json();
+                console.log(result)
+                if(result.message == 'success'){
+                    setLoginSwitch(true);
+                }else{
+                    setLoginSwitch(false);
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('userName')
+                }
+               
+            } catch (error) {
+                console.log(error)
+                alert('something went wrong')
+            }
+        }
+    
+        useEffect(()=>{
+            fetchdata();
+        },
+        [])
     const obj = {
         video : "https://ik.imagekit.io/Pawan2509/sample-video.mp4?updatedAt=1754415925990",
         Title : "Hello this is my title of the video",
@@ -32,7 +64,7 @@ export default function Stream() {
 
   return (
     <>
-    <div className='lg:flex md:ml-18 lg:ml-20'>
+    { LoginSwitch && <div className='lg:flex md:ml-18 lg:ml-20'>
         <div className='lg:w-7/10 md:mr-18 lg:mr-20'>
             <div className='mt-5'>
                 <div className=''>
@@ -75,7 +107,13 @@ export default function Stream() {
         <div className='bg-blue-500 h-screen lg:w-3/10'>
             <p>Side bar</p>
         </div>
-    </div>
+    </div>}
+
+    { !LoginSwitch && <div className='flex justify-center'>
+                <div className='h-20 w-9/10 md:w-4/10 bg-black m-3 text-white font-bold flex justify-center items-center rounded-2xl'>
+                    <p>To access the video, Kindly <Link to='/login' className='hover:text-blue-400'>logins</Link></p>
+                </div>
+            </div>}
     </>
   )
 }

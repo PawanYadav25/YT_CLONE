@@ -40,7 +40,7 @@ export const login = async (req,res)=>{                                 //Login 
             message : "Email and Pswd"
         })
     }
-    var token = jwt.sign({userName: UserNM, },process.env.JWT_SECRET,{expiresIn:"10m"});   //if all verification done and passed, create JWT token using Username
+    var token = jwt.sign({userName: UserNM, },process.env.JWT_SECRET,{expiresIn:"1h"});   //if all verification done and passed, create JWT token using Username
     res.status(200)
     res.json({userName:`${data.userName}`,generatedToken:token, message:'success'}); //send Response with TOken
     
@@ -62,5 +62,15 @@ export const inrtVd = async (req,res)=>{
 
 export const extractVD = async (req,res)=>{
     const data = await Video.find()
-    res.send(data)
+    res.json({data : data, message:'success'})
+}
+
+
+export const OneVideo = async (req,res)=>{      
+    const Fid = req.params.id;
+    const data = await Video.findOne({Video_id:Fid});   
+    if(!data){
+        return res.status(404).json({message:'Video is not Available'})
+    }
+    res.json({data : data, message:'success'})
 }

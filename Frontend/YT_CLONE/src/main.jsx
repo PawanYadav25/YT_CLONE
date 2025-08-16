@@ -27,7 +27,7 @@ const apRouter = createBrowserRouter([
         element: <SignUp/>
       },
       {
-        path:'/stream',
+        path:'/:id',
         element: <Stream/>
       },
       {
