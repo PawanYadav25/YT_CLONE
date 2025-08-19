@@ -3,6 +3,7 @@ import logo from "../IMage/Ylogo.webp"
 import Srchicon from "../IMage/Search.png"
 import { Link } from 'react-router-dom'
 
+
 export default function Header() {
   return (
     <div className='flex h-15 justify-around items-center'>

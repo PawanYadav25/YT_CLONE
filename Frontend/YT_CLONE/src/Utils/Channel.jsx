@@ -13,9 +13,19 @@ function Channel() {
         </div>
       </div>
     </div> }
-    { chlcret && <div className='flex justify-center'>
-      <img className='w-screen  md:m-5 h-40 md:rounded-2xl' src={banner} alt="" />
-    </div> }
+    { chlcret && <div><div className='md:flex md:flex-col md:items-center md:m-10'>
+      <img className='w-screen md:m-5 h-40 md:rounded-2xl' src={banner} alt="" />
+      <div className='md:flex'>
+        <div className='flex justify-center md:w-3/10 lg:w-2/10'>
+          <img className='m-5 h-50 w-50 rounded-full' src='https://ik.imagekit.io/Pawan2509/Thumbnail%20Image/Cartoon.png?updatedAt=1755348164176' alt="Profile picture" />
+        </div>
+        <div className='flex flex-col items-center md:items-start md:justify-center m-3 md:w-7/10 lg:w-8/10'>
+          <p className='text-2xl font-bold'>Pawan Yadav</p>
+          <p className='font-bold'>pawan@123 <span className='text-gray-600'>12k Subscriber</span></p>
+          <p className='text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae cum illum quisquam, quibusdam optio error qui, minus similique facere a cupiditate vero laborum. Laudantium distinctio deserunt ut dolorem aut incidunt!</p>
+        </div>
+      </div>
+    </div><hr /></div> }
     </>
   )
 }

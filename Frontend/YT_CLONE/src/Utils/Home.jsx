@@ -40,7 +40,7 @@ export default function Home() {
            
         } catch (error) {
             console.log(error)
-            alert('something went wrong')
+            // alert('something went wrong')
         }
     }
 

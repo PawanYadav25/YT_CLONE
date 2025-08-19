@@ -10,7 +10,7 @@ export default function VerifyJwtToken(req,res,next){
         const token = req.headers['authorization']
         jwt.verify(token,process.env.JWT_SECRET,(err, userName)=>{
             if(err){
-                return res.status(403).json({message:"token expire"})
+                return res.json({message:"token expire"})
             }
             req.userName = userName
             next();

@@ -68,9 +68,38 @@ export const extractVD = async (req,res)=>{
 
 export const OneVideo = async (req,res)=>{      
     const Fid = req.params.id;
-    const data = await Video.findOne({Video_id:Fid});   
-    if(!data){
-        return res.status(404).json({message:'Video is not Available'})
+    const data = await Video.find()
+    const fdata = data.filter(dt=>dt.Video_id==Fid)
+    if(fdata.length < 1){
+        return res.json({message:'No Video'})
     }
-    res.json({data : data, message:'success'})
+    const {video_link,video_title,channel_image,channel_Name,like,dislike,comment,description} = fdata[0]
+    res.json({data : [{video_link,video_title,channel_image,channel_Name,like,dislike,comment,description}], message:'success'})
+}
+
+
+
+
+export const LikeCount = async (req,res)=>{      //increase the Product count
+    const user = req.userName['userName'];      //Once the token is veified , we get the userName from the token
+    const pid = req.params.id;                     //get the product id which count need to be update
+    try {
+        await Video.updateOne({Video_id:pid}, { $inc:{"like":1}})    //increase the count if product is present
+        res.json({message: 'Like incereased'}) 
+
+    } catch (error) {
+        res.status(500).json({"message":error.message});
+    }
+}
+
+export const AddComment = async (req,res)=>{      //increase the Product count
+    const {user,message} = req.body;
+    const pid = req.params.id;                     //get the product id which count need to be update
+    try {
+        await Video.updateOne({ Video_id: pid },{$push:{comment:{$each:[{user, message}],$position: 0}}});
+        res.json({message : 'Comment added succesfully'}) 
+
+    } catch (error) {
+        res.status(500).json({"message":error.message});
+    }
 }
