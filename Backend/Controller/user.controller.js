@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Video from "../Model/video_model.js";
 import dotenv from "dotenv";
+import Channel from "../Model/Channel_model.js";
 dotenv.config();
 
 const Salt = 10;  //for Hashing the password with salt
@@ -102,4 +103,34 @@ export const AddComment = async (req,res)=>{      //increase the Product count
     } catch (error) {
         res.status(500).json({"message":error.message});
     }
+}
+
+
+export const Chnlcret = async (req,res)=>{
+    const {userName:user} = req.userName;
+    const {channel_image,Channel_person_name,Channel_handle,Channel_desc} = req.body
+    const data = await Channel.find();
+    const fdata = data.filter(dt => dt.Email_id==user)
+    if(!fdata){
+    try {
+        await Channel.insertOne({Email_id:user,channel_image,Channel_person_name,Channel_handle,Channel_desc})
+        res.json({Message : "Success"})
+    } catch (error) {
+        res.send(error)
+    }
+}else{
+    res.json({message:'Duplicate'})
+}
+}
+
+
+export const fetchCHNL = async (req,res)=>{
+    const {userName:user} = req.userName;
+    const data = await Channel.findOne({Email_id:user});
+    if(!data){
+        return res.json({message:'No Channel present'})
+    }
+    const {channel_image,Channel_person_name,Channel_handle,Channel_desc} = data
+    res.json({data:[{channel_image:channel_image,Channel_person_name:Channel_person_name,Channel_handle:Channel_handle,Channel_desc:Channel_desc}], message:'success'})
+    
 }

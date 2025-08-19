@@ -21,8 +21,8 @@ export default function Header() {
         </div>
       </div>
       <div>
-        <Link to='/login'>
-        <button className='font-bold p-2 rounded-3xl border-1 border-blue-500 text-blue-600 md:w-30'>Sign In</button></Link>
+        <Link to='/channel'>
+        <button className='font-bold p-2 rounded-3xl border-1 border-blue-500 text-blue-600 md:w-30'>Channel</button></Link>
       </div>
     </div>
   )

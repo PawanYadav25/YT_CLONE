@@ -119,7 +119,7 @@ export default function Stream() {
   return (
     <>
     { LoginSwitch && <div className='lg:flex md:ml-18 lg:ml-20'>
-        <div className='lg:w-7/10 md:mr-18 lg:mr-20'>
+        {Vdata.length > 0 && <div className='lg:w-7/10 md:mr-18 lg:mr-20'>
             <div className='mt-5'>
                 <div className=''>
                     <video className='w-10/10 md:rounded-2xl' src={Vdata[0].video_link} controls></video>
@@ -167,7 +167,7 @@ export default function Stream() {
                     )}
                 </div>
             </div>
-        </div>
+        </div>}
         <div className='h-screen lg:w-3/10'>
         <p className='font-bold text-2xl'>More Videos</p>
             <div className='flex flex-wrap'>

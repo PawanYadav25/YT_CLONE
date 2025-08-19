@@ -31,6 +31,10 @@ export default function Login() {
         localStorage.setItem('userName',result.userName)
         navigate("/")
       }
+      if(result.message == 'Email and Pswd')
+      {
+        alert('Kindly check the Email and password')
+      }
     } catch (error) {
       alert("We are getting error, Kindly check console for the error")
       console.log(error)
