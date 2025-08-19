@@ -4,21 +4,22 @@ A full-stack YouTube clone application built using the MERN Stack (MongoDB, Expr
 
 # 🚀 Features
 ---------------------------------------------------------------
-View channel-specific videos
-Add comments
-Create and manage your own channel
-User authentication with secure password storage
-Fully responsive UI with smooth UX
+1. View channel-specific videos
+2. Add comments
+3. Create and manage your own channel
+4. User authentication with secure password storage
+5. Fully responsive UI with smooth UX
+
 
 # 🛠️ Tech Stack
 -----------------------------------------------------------------
-Frontend
-React.js
-Tailwind CSS
-React Router
-Backend
-Node.js
-Express.js
-MongoDB with Mongoose
-Bcrypt.js (for password hashing)
-JWT (for authentication)# YT_CLONE
+1. Frontend
+2. React.js
+3. Tailwind CSS
+4. React Router
+5. Backend
+6. Node.js
+7. Express.js
+8. MongoDB with Mongoose
+9. Bcrypt.js (for password hashing)
+10. JWT (for authentication)# YT_CLONE
