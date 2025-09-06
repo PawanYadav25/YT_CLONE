@@ -131,7 +131,7 @@ export default function Home() {
 
             { !LoginSwitch && <div className='flex justify-center'>
                 <div className='h-20 w-9/10 md:w-4/10 bg-black m-3 text-white font-bold flex justify-center items-center rounded-2xl'>
-                    <p>To access the video, Kindly <Link to='/login' className='hover:text-blue-400'>login</Link></p>
+                    <p>To access the video, Kindly <Link to='/login' className='text-blue-600 text-xl'>login</Link></p>
                 </div>
             </div>}
         </div>

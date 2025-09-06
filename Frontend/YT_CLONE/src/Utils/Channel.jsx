@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import banner from '../IMage/banner.jpg'
 import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from './AuthContext';
 
 function Channel() {
+  const {setUserlgin} = useContext(AuthContext)
   const [chlcret,setchlcret] = useState(false);
   const [loggedin, setloggedin] = useState(false);
   const [chdata, setchdata] = useState({})
@@ -41,6 +43,7 @@ function Channel() {
       localStorage.removeItem('token')
       localStorage.removeItem('userName')
       alert('User Logged Off Successfully')
+      setUserlgin(false)
       navigate('/login')
     }
     useEffect(()=>{

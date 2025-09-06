@@ -1,11 +1,14 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link,useNavigate } from 'react-router-dom'
+import AuthContext from './AuthContext';
 
 export default function Login() {
+  const {setUserlgin} = useContext(AuthContext);
   const navigate = useNavigate();
   const [Email_id, setEmail_id] = useState();
   const [password, setpassword] = useState();
+
   const handlelogin = async (e)=>{
     e.preventDefault();
     if(!Email_id || !password){
@@ -29,6 +32,7 @@ export default function Login() {
         alert('User Login Successfully')
         localStorage.setItem('token',result.generatedToken)
         localStorage.setItem('userName',result.userName)
+        setUserlgin(true)
         navigate("/")
       }
       if(result.message == 'Email and Pswd')
