@@ -1,12 +1,14 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import like from '../IMage/like.png'
 import dislike from '../IMage/dislike.png'
 import share from '../IMage/share.png'
 import user from '../IMage/user.png'
+import AuthContext from './AuthContext'
 
 export default function Stream() {
+    const {setUserlgin} = useContext(AuthContext)
     const { id } = useParams();
     const [data, setdata] = useState([]);
     const [likecount, setlikecount] = useState(0);
@@ -30,6 +32,7 @@ export default function Stream() {
                 setdata(ftrdata);
             }else{
                 setLoginSwitch(false);
+                setUserlgin(false)
                 localStorage.removeItem('token')
                 localStorage.removeItem('userName')
             }

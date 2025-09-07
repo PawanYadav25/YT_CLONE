@@ -8,7 +8,8 @@ const Channel_Sch = new Schema({
     },
     channel_image : {
         type : String,
-        required : true
+        required : true,
+        default : 'https://ik.imagekit.io/Pawan2509/Thumbnail%20Image/Cartoon.png?updatedAt=1755348164176'
     },
     Channel_person_name : {
         type : String,

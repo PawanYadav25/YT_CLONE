@@ -20,17 +20,19 @@ function Channel() {
             const resp = await fetch(URL,{headers});
             const rslt = await resp.json();
             if(rslt.message == 'success'){
-              console.log('Success')
                 setchlcret(true)
                 setchdata(rslt.data[0])
               }
             if(rslt.message=='No Channel present'){
               setloggedin(true)
             }
+            if(rslt.message=='token expire'){
+              setloggedin(false)
+              setUserlgin(false)
+            }
               
         } catch (error) {
             console.log(error)
-            // alert('something went wrong')
         }
     }
 
@@ -63,7 +65,7 @@ function Channel() {
       {loggedin && <div className='bg-white h-40 w-3/4 md:w-1/4 rounded-2xl flex flex-col justify-center items-center'>
         <p className='font-bold m-5'>No channel found!!</p>
         <div>
-          <button className='bg-purple-950 text-white font-bold p-3 w-45 rounded-2xl'>Create Channel</button>
+          <Link to='/createchannel'><button className='bg-purple-950 text-white font-bold p-3 w-45 rounded-2xl'>Create Channel</button></Link>
           <button onClick={()=>{handlelogOut()}} className=' m-3 h-10 w-20 bg-violet-900 rounded-2xl active:bg-violet-300 text-white font-bold'>LogOut</button>
         </div>
       </div>}

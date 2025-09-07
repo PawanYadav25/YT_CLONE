@@ -22,28 +22,6 @@ export default function Header() {
   }
 
 
-  // function LogInValidation(token){
-  //   try {
-  //     const payload = JSON.parse(atob(token.split(".")[1])); // decode base64 payload
-  //     const exp = payload.exp * 1000; // exp is in seconds → convert to ms
-  //     console.log('data check',Date.now() < exp)
-  //     return Date.now() < exp; // valid if current time < expiry
-  //   } catch (err) {
-  //     return false; // invalid token format
-  //   }
-  // }
-
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token && LogInValidation(token)) {
-  //     setuserLogin(true);
-  //   } else {
-  //     setuserLogin(false);
-  //     // localStorage.removeItem("token"); // clean up expired token
-  //   }
-  // }, []);
-
   return (
     <div className='flex h-15 justify-around items-center'>
       <div><Link to='/'>

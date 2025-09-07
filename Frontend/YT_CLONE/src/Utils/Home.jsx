@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import bar from "../IMage/menu.png"
 import home from "../IMage/home.png"
@@ -13,10 +13,11 @@ import sport from "../IMage/sport.png"
 import course from "../IMage/learning.png"
 import fash from "../IMage/costume.png"
 import pod from "../IMage/Postcast.png"
+import AuthContext from './AuthContext'
 
 
 export default function Home() {
-
+    const {setUserlgin} = useContext(AuthContext)
     const [data, setdata] = useState([]);
     const [LoginSwitch, setLoginSwitch] = useState(false)
 
@@ -30,10 +31,12 @@ export default function Home() {
             const result = await response.json();
             if(result.message == 'success'){
                 setLoginSwitch(true);
+                setUserlgin(true)
                 setdata(result.data);
                 setfdata(result.data)
             }else{
                 setLoginSwitch(false);
+                setUserlgin(false)
                 localStorage.removeItem('token')
                 localStorage.removeItem('userName')
             }

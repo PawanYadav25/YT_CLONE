@@ -81,11 +81,11 @@ export const OneVideo = async (req,res)=>{
 
 
 
-export const LikeCount = async (req,res)=>{      //increase the Product count
-    const user = req.userName['userName'];      //Once the token is veified , we get the userName from the token
-    const pid = req.params.id;                     //get the product id which count need to be update
+export const LikeCount = async (req,res)=>{      
+    const user = req.userName['userName'];      
+    const pid = req.params.id;                     
     try {
-        await Video.updateOne({Video_id:pid}, { $inc:{"like":1}})    //increase the count if product is present
+        await Video.updateOne({Video_id:pid}, { $inc:{"like":1}})    
         res.json({message: 'Like incereased'}) 
 
     } catch (error) {
@@ -93,9 +93,9 @@ export const LikeCount = async (req,res)=>{      //increase the Product count
     }
 }
 
-export const AddComment = async (req,res)=>{      //increase the Product count
+export const AddComment = async (req,res)=>{      
     const {user,message} = req.body;
-    const pid = req.params.id;                     //get the product id which count need to be update
+    const pid = req.params.id;                     
     try {
         await Video.updateOne({ Video_id: pid },{$push:{comment:{$each:[{user, message}],$position: 0}}});
         res.json({message : 'Comment added succesfully'}) 
@@ -108,18 +108,18 @@ export const AddComment = async (req,res)=>{      //increase the Product count
 
 export const Chnlcret = async (req,res)=>{
     const {userName:user} = req.userName;
-    const {channel_image,Channel_person_name,Channel_handle,Channel_desc} = req.body
+    const {Channel_person_name,Channel_handle,Channel_desc} = req.body
     const data = await Channel.find();
     const fdata = data.filter(dt => dt.Email_id==user)
-    if(!fdata){
+    if(fdata.length < 1){
     try {
-        await Channel.insertOne({Email_id:user,channel_image,Channel_person_name,Channel_handle,Channel_desc})
+        await Channel.insertOne({Email_id:user,Channel_person_name,Channel_handle,Channel_desc})
         res.json({Message : "Success"})
     } catch (error) {
         res.send(error)
     }
 }else{
-    res.json({message:'Duplicate'})
+    res.json({message:'Duplicate',Fdata:fdata})
 }
 }
 
